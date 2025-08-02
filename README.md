@@ -11,10 +11,89 @@ NudgePod keeps your workloads in sync by watching for any changes to ConfigMap r
 
 ## Roadmap
 
-- [ ] Figure out how to package this and deploy and install using a single command
+- [X] Figure out how to package this and deploy and install using a single command
 - [ ] ConfigMap selection – add an annotation or flag to control which ConfigMaps to watch.
 - [ ] Reload controls – allow app label specifications, introduce a reload delay, and other fine-grained options.
 - [ ] Namespace filtering – enable users to include or exclude specific namespaces.
+
+
+## Installation
+
+### Using Helm (Recommended)
+
+The easiest way to install NudgePod is using Helm. NudgePod is available as a Helm chart.
+
+#### 1. Add the Helm Repository
+
+```bash
+helm repo add nudgepod https://colt005.github.io/nudgepod
+helm repo update
+```
+
+#### 2. Install NudgePod
+
+```bash
+helm upgrade --install nudgepod nudgepod/nudgepod
+```
+
+This will install NudgePod in the default namespace. To install in a specific namespace:
+
+```bash
+helm upgrade --install nudgepod nudgepod/nudgepod --namespace nudgepod --create-namespace
+```
+
+#### 3. Verify Installation
+
+Check that the NudgePod controller is running:
+
+```bash
+kubectl get pods -l app.kubernetes.io/name=nudgepod
+```
+
+You should see the NudgePod controller pod in a `Running` state.
+
+#### 4. Uninstall NudgePod
+
+To remove NudgePod from your cluster:
+
+```bash
+helm uninstall nudgepod
+```
+
+If you installed in a specific namespace:
+
+```bash
+helm uninstall nudgepod -n nudgepod
+```
+
+### Configuration Options
+
+You can customize the installation by overriding the default values:
+
+```bash
+helm upgrade --install nudgepod nudgepod/nudgepod \
+  --set controllerManager.manager.image.tag=v0.1.1 \
+  --set controllerManager.replicas=2
+```
+
+#### Available Configuration Options
+
+- `controllerManager.manager.image.repository`: Container image repository (default: `rohan005/nudgepod`)
+- `controllerManager.manager.image.tag`: Container image tag (default: `latest`)
+- `controllerManager.replicas`: Number of controller replicas (default: `1`)
+- `controllerManager.manager.resources`: Resource limits and requests for the controller
+- `metricsService.type`: Service type for metrics endpoint (default: `ClusterIP`)
+
+### Manual Installation
+
+If you prefer to install manually without Helm, YOU CANNOT, just use helm :)
+
+
+### Prerequisites
+
+- Kubernetes cluster v1.11.3+
+- kubectl configured to communicate with your cluster
+- Helm v3.0+ (for Helm installation)
 
 ## Getting Started
 
