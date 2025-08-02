@@ -11,6 +11,7 @@ NudgePod keeps your workloads in sync by watching for any changes to ConfigMap r
 
 ## Roadmap
 
+- [ ] Figure out how to package this and deploy and install using a single command
 - [ ] ConfigMap selection – add an annotation or flag to control which ConfigMaps to watch.
 - [ ] Reload controls – allow app label specifications, introduce a reload delay, and other fine-grained options.
 - [ ] Namespace filtering – enable users to include or exclude specific namespaces.
