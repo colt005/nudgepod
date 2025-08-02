@@ -3,12 +3,12 @@ entries:
   nudgepod:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-08-03T00:22:47.678349+05:30"
+    created: "2025-08-03T00:39:12.114083+05:30"
     description: Operator that restarts pods when their ConfigMaps change
-    digest: 9a3a9be33eeb141fa96e3a2a5a2ab93178730edb75cb725686f8a227d20a72b5
+    digest: 256a33ddf3a1ce68cbcc2e5ea3fff1f41e69efe6b1b9fec2c63f884bf5bc7c91
     name: nudgepod
     type: application
     urls:
     - https://colt005.github.io/nudgepod/nudgepod-0.1.0.tgz
     version: 0.1.0
-generated: "2025-08-03T00:22:47.677614+05:30"
+generated: "2025-08-03T00:39:12.109933+05:30"
